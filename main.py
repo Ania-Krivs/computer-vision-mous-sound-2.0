@@ -12,6 +12,9 @@ while True:
         # print('следим')
         vp.mouse_move()
         vp.mouse_left_click()
+        vp.mouse_right_click()
+        vp.scrolling_up()
+        vp.scrolling_down()
         if vp.check_stop_watch():
             continue
         

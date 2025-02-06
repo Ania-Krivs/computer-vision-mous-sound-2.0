@@ -2,7 +2,6 @@ import cv2
 import mediapipe as mp
 import pyautogui as pag
 from defines import *
-import time
 
 from Gestures import Gestures as gesture, len_between
 
@@ -144,9 +143,37 @@ class VideoProcessing:
     @staticmethod
     def mouse_left_click():
         if len(VideoProcessing.HandLandmark) > 0:
-            if len_between(VideoProcessing.HandLandmark[4], VideoProcessing.HandLandmark[12]) < 20:
+            if len_between(VideoProcessing.HandLandmark[4], VideoProcessing.HandLandmark[8]) < 20:
                 pag.click()
-                print('клик')
+                print('клик левой кнопкой мыши')
+                
+    @staticmethod
+    def mouse_right_click():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[4], VideoProcessing.HandLandmark[12]) < 20:
+                pag.click(button="right")
+                print('клик правой кнопкой мыши')
+                
+    @staticmethod
+    def scrolling_up():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[8], VideoProcessing.HandLandmark[12]) < 25 and len_between(VideoProcessing.HandLandmark[16], VideoProcessing.HandLandmark[12]) < 25:
+                pag.scroll(50)
+                print("up")       
+                
+    @staticmethod
+    def scrolling_down():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[16], VideoProcessing.HandLandmark[0]) < 20:
+                pag.scroll(-50)  
+                print("down") 
+    
+    @staticmethod
+    def mouse_scrolling():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[8], VideoProcessing.HandLandmark[12]) < 20:
+                pass
+             
 
 
 
