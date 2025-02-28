@@ -3,7 +3,7 @@ import mediapipe as mp
 import pyautogui as pag
 from defines import *
 
-from Gestures import Gestures as gesture, len_between
+from Gestures import Gestures as gesture, len_between, len_between_many
 
 
 class VideoProcessing:
@@ -157,7 +157,7 @@ class VideoProcessing:
     @staticmethod
     def scrolling_up():
         if len(VideoProcessing.HandLandmark) > 0:
-            if len_between(VideoProcessing.HandLandmark[8], VideoProcessing.HandLandmark[12]) < 25 and len_between(VideoProcessing.HandLandmark[16], VideoProcessing.HandLandmark[12]) < 25:
+            if len_between(VideoProcessing.HandLandmark[8], VideoProcessing.HandLandmark[12]) < 25 and len_between(VideoProcessing.HandLandmark[16], VideoProcessing.HandLandmark[12]) < 20:
                 pag.scroll(50)
                 print("up")       
                 
@@ -167,6 +167,33 @@ class VideoProcessing:
             if len_between(VideoProcessing.HandLandmark[16], VideoProcessing.HandLandmark[0]) < 20:
                 pag.scroll(-50)  
                 print("down") 
+                
+    @staticmethod
+    def text_select():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[6], VideoProcessing.HandLandmark[4]) < 20:
+                pag.hotkey('shift', 'right')
+                print("выделить")
+                
+    @staticmethod
+    def ctrl_c():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[16], VideoProcessing.HandLandmark[4]) < 20:
+                pag.keyDown('ctrl')
+                pag.press('c')
+                pag.keyUp('ctrl')
+                print("скопировать")
+    
+    @staticmethod
+    def ctrl_v():
+        if len(VideoProcessing.HandLandmark) > 0:
+            if len_between(VideoProcessing.HandLandmark[4], VideoProcessing.HandLandmark[20]) < 20:
+                pag.keyDown('ctrl')
+                pag.press('v')
+                pag.keyUp('ctrl')
+                print("вставить")
+    
+
     
     @staticmethod
     def mouse_scrolling():

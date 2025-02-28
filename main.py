@@ -15,6 +15,9 @@ while True:
         vp.mouse_right_click()
         vp.scrolling_up()
         vp.scrolling_down()
+        vp.text_select()
+        vp.ctrl_c()
+        vp.ctrl_v()
         if vp.check_stop_watch():
             continue
         
